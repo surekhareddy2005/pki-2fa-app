@@ -1,1 +1,1 @@
-* * * * * root /usr/local/bin/node /usr/src/app/scripts/log_2fa_cron.js >> /cron/last_code.txt 2>&1
+* * * * * /usr/local/bin/node /usr/src/app/scripts/log_2fa_cron.js >> /cron/last_code.txt 2>&1

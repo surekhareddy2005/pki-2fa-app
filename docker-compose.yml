@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
 
-    container_name: pki-2fa-app
+    container_name: pki-based-2fa-app
 
     ports:
       - "8080:8080"

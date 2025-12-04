@@ -11,10 +11,10 @@ server.use(express.urlencoded({ extended: false }));
 server.use(express.static("public"));
 
 const PRIVATE_KEY = fs.readFileSync('./keys/student_private.pem', 'utf8');
-const SEED = fs.readFileSync('./data/seed.txt', 'utf8').trim()
 
 server.get('/', (req, res) => {
     res.status(200).json({
+        developer: "Surekha Reddy",
         project_name: "Build Secure PKI-Based 2FA Microservice with Docker",
         status: "Running",
         available_routes: [
@@ -22,7 +22,8 @@ server.get('/', (req, res) => {
             "POST /decrypt-seed",
             "GET /generate-2fa",
             "POST /verify-2fa",
-        ]
+        ],
+        created_at: "04-12-2025"
     })
 })
 
@@ -51,6 +52,7 @@ server.post('/decrypt-seed', async (req, res) => {
 
 server.get('/generate-2fa', async (req, res) => {
     try {
+        const SEED = fs.readFileSync('/data/seed.txt', 'utf8').trim()
         const code = generateTOTP(SEED);
         return res.status(200).json({
             code: code,
@@ -71,6 +73,7 @@ server.post('/verify-2fa', async (req, res) => {
                 error: "Missing code"
             })
         }
+        const SEED = fs.readFileSync('/data/seed.txt', 'utf8').trim()
         const { code } = req.body;
         if(!code || code === "") {
             return res.status(400).json({
