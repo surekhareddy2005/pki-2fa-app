@@ -1,3 +1,3 @@
 node_modules
 .env
-/keys/encrypted.txt
+keys/encrypted_seed.txt
