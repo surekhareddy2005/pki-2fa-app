@@ -21,6 +21,8 @@ try {
     process.exit(0);
 }
 
-const timestamp = new Date().toISOString().replace("T", " ").replace("Z", "");
+// Get current timestamp and format it as 'YYYY-MM-DD HH:MM:SS'
+const timestamp = new Date();
+const formattedTimestamp = timestamp.toISOString().split('T')[0] + " " + timestamp.toISOString().split('T')[1].split('.')[0];
 
-console.log(`${timestamp} - 2FA Code: ${code}`);
+console.log(`${formattedTimestamp} - 2FA Code: ${code}`);

@@ -29,11 +29,4 @@ const decryptSeed = async (encrypted_seed) => {
     }
 };
 
-const ENCRYPTED_SEED_PATH = "./keys/encrypted_seed.txt";
-(async () => {
-    const encrypted_seed = fs.readFileSync(ENCRYPTED_SEED_PATH, "utf8");
-    const seed = await decryptSeed(encrypted_seed);
-    fs.writeFileSync("./data/seed.txt", seed);
-})();
-
 export default decryptSeed;
